@@ -32,6 +32,26 @@ describe("Matchers", function() {
     });
   });
 
+  describe("matchers that expect an element array", function() {
+    it('works when given a collection with one element', function() {
+      expect($('<div class="foo"></div>')).toHaveLength(1);
+    });
+
+    it('works when given a single html element', function() {
+      expect($('<div class="foo"></div>')[0]).toHaveLength(1);
+    });
+
+    it('works when given a selector', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
+      document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
+      expect('.foo').toHaveLength(2);
+    });
+
+    it('does not throw if the element does not exist', function() {
+      expect('#does-not-exist').toHaveLength(0);
+    });
+  });
+
   it('tests classes', function() {
     expect($('<div class="foo bar"></div>')).toHaveClass('foo');
     expect($('<div class="foo bar"></div>')).toHaveClass('bar');
@@ -44,6 +64,13 @@ describe("Matchers", function() {
     expect($('<div><span>foo</span><p></p></div>')).toHaveText('foo');
     expect($('<div>foo</div>')).not.toHaveText('fo');
     expect($('<div>foo</div>')).not.toHaveText('bar');
+  });
+
+  it('tests existence', function() {
+    expect($('<div>foo</div>')).toExist();
+    expect('#does-not-exist').not.toExist();
+    document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
+    expect('.foo').toExist();
   });
 
   it('tests length', function() {
