@@ -18,6 +18,18 @@ describe("Matchers", function() {
       document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
       expect('.foo').toHaveClass('foo');
     });
+
+    it('raises an error if no element is found', function() {
+      expect(function() {
+        expect('.foo').toHaveClass('foo');
+      }).toThrowError('Attempting to make assertion on element that does not exist');
+    });
+
+    it('raises an error if more than one element is found', function() {
+      expect(function() {
+        expect($('<div>foo</div><div>bar</div>')).toHaveClass('foo')
+      }).toThrowError('Attempting to make single element assertion on multiple elements');
+    });
   });
 
   it('tests classes', function() {
