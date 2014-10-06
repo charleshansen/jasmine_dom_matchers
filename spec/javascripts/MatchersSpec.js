@@ -52,6 +52,38 @@ describe("Matchers", function() {
     });
   });
 
+  describe('visibility', function() {
+    it('matches visible elements are visible', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
+      expect('.foo').toBeVisible();
+      expect('.foo').not.toBeHidden();
+    });
+
+    it('matches display: none; elements as hidden', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="bar" style="display: none;"></div>')[0]);
+      expect('.bar').not.toBeVisible();
+      expect('.bar').toBeHidden();
+    });
+
+    it('matches visibility: hidden; elements as hidden', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="baz" style="visibility: hidden;"></div>')[0]);
+      expect('.baz').not.toBeVisible();
+      expect('.baz').toBeHidden();
+    });
+
+    it('matches hidden inputs as hidden', function() {
+      document.querySelector('#jasmine-content').appendChild($('<input type="hidden"></div>')[0]);
+      expect('input[type="hidden"]').not.toBeVisible();
+      expect('input[type="hidden"]').toBeHidden();
+    });
+
+    it('matches elements with no size as hidden', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="empty" style="width: 0; height: 0;"></div>')[0]);
+      expect('.empty').not.toBeVisible();
+      expect('.empty').toBeHidden();
+    });
+  });
+
   it('tests classes', function() {
     expect($('<div class="foo bar"></div>')).toHaveClass('foo');
     expect($('<div class="foo bar"></div>')).toHaveClass('bar');
