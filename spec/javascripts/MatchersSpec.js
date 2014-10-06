@@ -98,6 +98,12 @@ describe("Matchers", function() {
     expect($('<div>foo</div>')).not.toHaveText('bar');
   });
 
+  it('tests attributes', function() {
+    expect($('<div foo="bar"></div>')).toHaveAttr('foo', 'bar');
+    expect($('<div foo="bar"></div>')).not.toHaveAttr('foo', 'baz');
+    expect($('<div foo="bar"></div>')).not.toHaveAttr('bar', 'baz');
+  });
+
   it('tests existence', function() {
     expect($('<div>foo</div>')).toExist();
     expect('#does-not-exist').not.toExist();
