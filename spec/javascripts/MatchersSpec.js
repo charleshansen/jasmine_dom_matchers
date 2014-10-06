@@ -115,4 +115,13 @@ describe("Matchers", function() {
     expect($('<div>foo</div><div>bar</div>')).toHaveLength(2);
     expect($('<div>foo</div><div>bar</div>')).not.toHaveLength(3);
   });
+
+  if(window.jQuery) {
+    it('uses jQuery for selectors if available', function() {
+      document.querySelector('#jasmine-content').appendChild($('<div class="foo">zebra</div>')[0]);
+      expect('.foo:contains("zebra")').toHaveLength(1);
+    });
+  } else {
+    xit('has jQuery fallbacks', function() {});
+  }
 });
