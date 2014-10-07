@@ -98,6 +98,20 @@ describe("Matchers", function() {
     expect($('<div>foo</div>')).not.toHaveText('bar');
   });
 
+  describe("toContainText", function() {
+    it('matches strings', function() {
+      expect($('<div>foo</div>')).toContainText('foo');
+      expect($('<div>foo</div>')).toContainText('oo');
+      expect($('<div>foo</div>')).not.toContainText('oof');
+    });
+
+    it('matches regex', function() {
+      expect($('<div>foo</div>')).toContainText(/foo/);
+      expect($('<div>foo</div>')).toContainText(/o{2}/);
+      expect($('<div>foo</div>')).not.toContainText(/o{3}/);
+    });
+  });
+
   it('tests attributes', function() {
     expect($('<div foo="bar"></div>')).toHaveAttr('foo', 'bar');
     expect($('<div foo="bar"></div>')).not.toHaveAttr('foo', 'baz');
