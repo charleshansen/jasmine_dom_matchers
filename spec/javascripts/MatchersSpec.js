@@ -118,6 +118,13 @@ describe("Matchers", function() {
     expect($('<div foo="bar"></div>')).not.toHaveAttr('bar', 'baz');
   });
 
+  describe("toHaveProp", function() {
+    it('reads the property, not the attribute', function() {
+      expect($('<input type="checkbox" checked="checked">')).toHaveProp('checked', true);
+      expect($('<input type="checkbox" checked="checked">')).not.toHaveProp('checked', 'checked');
+    });
+  });
+
   it('tests existence', function() {
     expect($('<div>foo</div>')).toExist();
     expect('#does-not-exist').not.toExist();
