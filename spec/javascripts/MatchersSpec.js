@@ -125,6 +125,16 @@ describe("Matchers", function() {
     });
   });
 
+  it('tests checked', function() {
+    expect($('<input type="checkbox" checked="checked">')).toBeChecked();
+    expect($('<input type="checkbox">')).not.toBeChecked();
+  });
+
+  it('tests selected', function() {
+    expect($('<option selected="selected">foo</option>')).toBeSelected();
+    expect($('<option>foo</option>')).not.toBeSelected();
+  });
+
   it('tests existence', function() {
     expect($('<div>foo</div>')).toExist();
     expect('#does-not-exist').not.toExist();
