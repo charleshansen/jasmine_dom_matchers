@@ -120,9 +120,14 @@ describe("Matchers", function() {
 
   describe("toHaveProp", function() {
     it('reads the property, not the attribute', function() {
-      expect($('<input type="checkbox" checked="checked">')).toHaveProp('checked', true);
-      expect($('<input type="checkbox" checked="checked">')).not.toHaveProp('checked', 'checked');
+      expect($('<input type="checkbox" checked="checked"/>')).toHaveProp('checked', true);
+      expect($('<input type="checkbox" checked="checked"/>')).not.toHaveProp('checked', 'checked');
     });
+  });
+
+  it('tests values', function() {
+    expect($('<input type="text" value="foo"/>')).toHaveValue('foo');
+    expect($('<input type="text" value="foo"/>')).not.toHaveValue('bar');
   });
 
   it('tests checked', function() {
