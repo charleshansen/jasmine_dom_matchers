@@ -1,7 +1,7 @@
 {
   "name": "jasmine_dom_matchers",
   "description": "dom matchers for Jasmine",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["jasmine"],
   "homepage": "http://github.com/charleshansen/jasmine_dom_matchers",
   "author": "Charles Hansen <chansen87@gmail.com>",
