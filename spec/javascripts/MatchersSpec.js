@@ -140,6 +140,15 @@ describe("Matchers", function() {
     expect($('<option>foo</option>')).not.toBeSelected();
   });
 
+  it('tests focus', function() {
+    var focusedInput = $('<input class="focused" type="text">')[0];
+    document.querySelector('#jasmine-content').appendChild(focusedInput);
+    document.querySelector('#jasmine-content').appendChild($('<input class="blurred" type="text">')[0]);
+    focusedInput.focus();
+    expect('.focused').toBeFocused();
+    expect('.blurred').not.toBeFocused();
+  });
+
   it('tests existence', function() {
     expect($('<div>foo</div>')).toExist();
     expect('#does-not-exist').not.toExist();
