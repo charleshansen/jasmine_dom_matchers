@@ -91,11 +91,21 @@ describe("Matchers", function() {
     expect($('<div><div class="foo"></div></div>')).not.toHaveClass('foo');
   });
 
-  it('matches text', function() {
-    expect($('<div>foo</div>')).toHaveText('foo');
-    expect($('<div><span>foo</span><p></p></div>')).toHaveText('foo');
-    expect($('<div>foo</div>')).not.toHaveText('fo');
-    expect($('<div>foo</div>')).not.toHaveText('bar');
+  describe("toHaveText", function() {
+    it('matches text exactly', function() {
+      expect($('<div>foo</div>')).toHaveText('foo');
+      expect($('<div><span>foo</span><p></p></div>')).toHaveText('foo');
+      expect($('<div>foo</div>')).not.toHaveText('fo');
+      expect($('<div>foo</div>')).not.toHaveText('bar');
+    });
+
+    it('ignores whitespace', function() {
+      expect($('<div> foo </div>')).toHaveText('foo');
+    });
+
+    it('handles regex', function() {
+      expect($('<div>foo</div>')).toHaveText(/o{2}/);
+    });
   });
 
   describe("toContainText", function() {
