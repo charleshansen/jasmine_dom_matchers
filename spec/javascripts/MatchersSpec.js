@@ -122,16 +122,28 @@ describe("Matchers", function() {
     });
   });
 
-  it('tests attributes', function() {
-    expect($('<div foo="bar"></div>')).toHaveAttr('foo', 'bar');
-    expect($('<div foo="bar"></div>')).not.toHaveAttr('foo', 'baz');
-    expect($('<div foo="bar"></div>')).not.toHaveAttr('bar', 'baz');
+  describe('toHaveAttr', function() {
+    it('tests attribute values if given one', function() {
+      expect($('<div foo="bar"></div>')).toHaveAttr('foo', 'bar');
+      expect($('<div foo="bar"></div>')).not.toHaveAttr('foo', 'baz');
+      expect($('<div foo="bar"></div>')).not.toHaveAttr('bar', 'baz');
+    });
+
+    it('tests the attribute exists at all if not given a value', function() {
+      expect($('<div foo="bar"></div>')).toHaveAttr('foo');
+      expect($('<div foo="bar"></div>')).not.toHaveAttr('bar');
+    });
   });
 
   describe("toHaveProp", function() {
     it('reads the property, not the attribute', function() {
       expect($('<input type="checkbox" checked="checked"/>')).toHaveProp('checked', true);
       expect($('<input type="checkbox" checked="checked"/>')).not.toHaveProp('checked', 'checked');
+    });
+
+    it('tests the property exists at all if not given a value', function() {
+      expect($('<input type="checkbox" checked="checked"/>')).toHaveProp('checked');
+      expect($('<input type="checkbox" checked="checked"/>')).not.toHaveProp('defaultSelected');
     });
   });
 
