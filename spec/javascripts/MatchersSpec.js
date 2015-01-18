@@ -1,5 +1,5 @@
 describe("Matchers", function() {
-  var $ = function(html) {
+  var $ = window.jQuery || function(html) {
     var element = document.createElement('div');
     element.innerHTML = html;
     return element.children;
