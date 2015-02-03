@@ -147,6 +147,20 @@ describe("Matchers", function() {
     });
   });
 
+  describe("toHaveCss", function() {
+      beforeEach(function() {
+        document.querySelector('#jasmine-content')
+        .appendChild($('<div class="foo" style="font-size: 16px; display: inline-block;"></div>')[0]);
+      })
+      it('passes if the css matches', function() {
+        expect('.foo').toHaveCss({'font-size': '16px', display: 'inline-block'});
+      });
+
+      it('failes if the any css does not match', function() {
+        expect('.foo').not.toHaveCss({'font-size': '24px', display: 'inline-block'});
+      });
+  });
+
   it('tests values', function() {
     expect($('<input type="text" value="foo"/>')).toHaveValue('foo');
     expect($('<input type="text" value="foo"/>')).not.toHaveValue('bar');
