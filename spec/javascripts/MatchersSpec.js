@@ -84,13 +84,21 @@ describe("Matchers", function() {
     });
   });
 
-  it('tests classes', function() {
-    expect($('<div class="foo bar"></div>')).toHaveClass('foo');
-    expect($('<div class="foo bar"></div>')).toHaveClass('bar');
-    expect($('<div class="foo"></div>')).not.toHaveClass('bar');
-    expect($('<div><div class="foo"></div></div>')).not.toHaveClass('foo');
-  });
+  describe('toHaveClass', function() {
+    it('tests classes when given a single class', function() {
+      expect($('<div class="foo bar"></div>')).toHaveClass('foo');
+      expect($('<div class="foo bar"></div>')).toHaveClass('bar');
+      expect($('<div class="foo"></div>')).not.toHaveClass('bar');
+      expect($('<div><div class="foo"></div></div>')).not.toHaveClass('foo');
+    });
 
+    it('works with arrays', function() {
+      expect($('<div class="foo bar baz"></div>')).toHaveClass(['foo', 'bar']);
+      expect($('<div class="foo bar"></div>')).not.toHaveClass(['foo', 'zebra']);
+      expect($('<div></div>')).not.toHaveClass(['foo']);
+    });
+  });
+  
   describe("toHaveText", function() {
     it('matches text exactly', function() {
       expect($('<div>foo</div>')).toHaveText('foo');
