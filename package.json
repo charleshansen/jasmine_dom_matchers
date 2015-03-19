@@ -2,8 +2,10 @@
   "name": "jasmine_dom_matchers",
   "description": "dom matchers for Jasmine",
   "main": "lib/jasmine_dom_matchers.js",
-  "version": "0.1.3",
-  "keywords": ["jasmine"],
+  "version": "0.2.0",
+  "keywords": [
+    "jasmine"
+  ],
   "homepage": "http://github.com/charleshansen/jasmine_dom_matchers",
   "author": "Charles Hansen <chansen87@gmail.com>",
   "license": "MIT",
