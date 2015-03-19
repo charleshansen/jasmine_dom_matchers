@@ -7,8 +7,8 @@ module.exports = function (grunt) {
     jasmine: {
       test: {
         options: {
-          helpers: "lib/**/*.js",
-          specs: "spec/**/*.js",
+          helpers: ["spec/vendor/**/*.js", "lib/**/*.js", "spec/SpecHelper.js"],
+          specs: "spec/**/*Spec.js",
           keepRunner: true
         }
       }
