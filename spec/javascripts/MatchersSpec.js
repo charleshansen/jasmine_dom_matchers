@@ -219,9 +219,16 @@ describe("Matchers", function() {
       expect('.foo').toExist();
     });
 
-    it('tests length', function() {
-      expect($('<div>foo</div><div>bar</div>')).toHaveLength(2);
-      expect($('<div>foo</div><div>bar</div>')).not.toHaveLength(3);
+    describe('toHaveLength', function() {
+      it('works on html collections', function() {
+        expect($('<div>foo</div><div>bar</div>')).toHaveLength(2);
+        expect($('<div>foo</div><div>bar</div>')).not.toHaveLength(3);
+      });
+
+      it('works on arrays', function() {
+        expect([1,2,3]).toHaveLength(3);
+        expect([1,2,3]).not.toHaveLength(4);
+      });
     });
   }
 
