@@ -92,19 +92,19 @@ extra care when writing selectors for your tests, but is not intended to be a bu
     - Reverse of toBeHidden
   * toContainText(text)
     - Checks if text substring is contained within element
-    - text may be a RegExp
+    - text may be a number or RegExp
   * toExist()
     - True if the element exists, does not have to be in the DOM
   * toHaveAttr(attributeName, attributeValue)
     - checks element attributes
     - attributeValue is optional, if omitted, will check that the attribute exists
-    - attributeValue can be a string or a RegExp
+    - attributeValue can be a number, string or a RegExp
   * toHaveClass(className(String or Array of Strings))
     - Checks for presence of classes on the element.
     - If className is an Array, checks for all classes in the array.
   * toHaveCss(styles)
     - styles is an object, all styles given in that object will be checked
-    - style values can get RegExp
+    - style values can get number or RegExp
     - e.g. `expect('.foo').toHaveCss({font-size: '16px', display: /block/})`
   * toHaveLength(length)
     - Checks for `length` number of html elements.
@@ -112,11 +112,19 @@ extra care when writing selectors for your tests, but is not intended to be a bu
   * toHaveProp(propertyName, propertyValue)
     - checks element properties
     - propertyValue is optional, if omitted, will check that the attribute exists
-    - propertyValue can be a string or a RegExp  
+    - propertyValue can be a number, string or a RegExp  
   * toHaveText(text)
     - Checks for exact match with text, after trimming whitespace.
-    - text may be a RegExp    
+    - text may be a number or RegExp    
   * toHaveValue(value)
     - checks the `val` of eligible elements (like inputs)
-    - value may be a RegExp  
+    - value may be a number or RegExp  
  
+## Development
+
+To run tests:
+```sh
+npm install
+grunt connect
+```
+Tests will be at http://localhost:8888/_SpecRunner.html

@@ -111,6 +111,11 @@ describe("Matchers", function() {
       it('handles regex', function() {
         expect($('<div>foo</div>')).toHaveText(/o{2}/);
       });
+
+      it('handles numbers', function() {
+        expect($('<div>42</div>')).toHaveText(42);
+        expect($('<div>42</div>')).not.toHaveText(4);
+      });
     });
 
     describe("toContainText", function() {
@@ -124,6 +129,11 @@ describe("Matchers", function() {
         expect($('<div>foo</div>')).toContainText(/foo/);
         expect($('<div>foo</div>')).toContainText(/o{2}/);
         expect($('<div>foo</div>')).not.toContainText(/o{3}/);
+      });
+
+      it('matches numbers', function() {
+        expect($('<div>42</div>')).toContainText(4);
+        expect($('<div>42</div>')).not.toContainText(423);
       });
     });
 
@@ -142,6 +152,11 @@ describe("Matchers", function() {
       it('uses a regex if given one', function() {
         expect($('<div foo="bar"></div>')).toHaveAttr('foo', /^ba/);
         expect($('<div foo="bar"></div>')).not.toHaveAttr('bar', /ba$/);
+      });
+
+      it('stringifies the expectations if applicable', function() {
+        expect($('<div foo="2"></div>')).toHaveAttr('foo', 2);
+        expect($('<div foo="2"></div>')).not.toHaveAttr('foo', 3);
       });
     });
 
@@ -190,6 +205,11 @@ describe("Matchers", function() {
       it('tests values with regex if given one', function() {
         expect($('<input type="text" value="foo"/>')).toHaveValue(/oo/);
         expect($('<input type="text" value="foo"/>')).not.toHaveValue(/^oo/);
+      });
+
+      it('does not crash if given undefined', function() {
+        expect($('<input type="text" value="foo"/>')).not.toHaveValue(undefined);
+        expect($('<input type="text" value="0"/>')).toHaveValue(0);
       });
     });
 
