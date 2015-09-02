@@ -207,8 +207,9 @@ describe("Matchers", function() {
         expect($('<input type="text" value="foo"/>')).not.toHaveValue(/^oo/);
       });
 
-      it('does not crash if given undefined', function() {
+      it('does not crash if given undefined or null', function() {
         expect($('<input type="text" value="foo"/>')).not.toHaveValue(undefined);
+        expect($('<input type="text" value="foo"/>')).not.toHaveValue(null);
         expect($('<input type="text" value="0"/>')).toHaveValue(0);
       });
     });
