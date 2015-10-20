@@ -94,6 +94,11 @@ describe("Matchers", function() {
         expect($('<div class="foo bar"></div>')).not.toHaveClass(['foo', 'zebra']);
         expect($('<div></div>')).not.toHaveClass(['foo']);
       });
+
+      it('works with svg', function() {
+        expect($('<svg class="foo bar"></svg>')).toHaveClass('foo');
+        expect($('<svg class="foo bar"></svg>')).not.toHaveClass('baz');
+      });
     });
 
     describe("toHaveText", function() {
