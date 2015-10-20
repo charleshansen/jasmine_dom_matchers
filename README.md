@@ -122,9 +122,18 @@ extra care when writing selectors for your tests, but is not intended to be a bu
  
 ## Development
 
-To run tests:
+To run tests headlessly:
+
+```sh
+npm install
+npm test
+```
+
+To run tests in browser:
+
 ```sh
 npm install
 grunt connect
 ```
+
 Tests will be at http://localhost:8888/_SpecRunner.html
