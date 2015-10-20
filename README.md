@@ -1,5 +1,7 @@
 # Jasmine Dom Matchers
 
+[![Build Status](https://travis-ci.org/charleshansen/jasmine_dom_matchers.svg?branch=master)](https://travis-ci.org/charleshansen/jasmine_dom_matchers)
+
 A lightweight matching library for making assertions about html in Jasmine tests.
 The matchers are designed to provide useful error messages on failure. They will also protect against some common falsely passing assertions.
 The api is backwards compatible with matchers from [jasmine-jquery](https://github.com/velesin/jasmine-jquery) and can be used as a replacement. jQuery is not required.
