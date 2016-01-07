@@ -229,6 +229,12 @@ describe("Matchers", function() {
       expect($('<option>foo</option>')).not.toBeSelected();
     });
 
+    it('tests disabled', function() {
+      expect($('<option disabled="disabled">foo</option>')).toBeDisabled();
+      expect($('<option disabled>foo</option>')).toBeDisabled();
+      expect($('<option>foo</option>')).not.toBeDisabled();
+    });
+
     it('tests focus', function() {
       var focusedInput = $('<input class="focused" type="text">')[0];
       document.querySelector('#jasmine-content').appendChild(focusedInput);
