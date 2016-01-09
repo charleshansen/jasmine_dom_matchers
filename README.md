@@ -81,7 +81,9 @@ extra care when writing selectors for your tests, but is not intended to be a bu
 ## Matchers
 
   * toBeChecked()
-    - Checks if element has a `checked` property, only useful for checkbox inputs 
+    - Checks if element has a `checked` property, only useful for checkbox inputs
+  * toBeDisabled()
+    - Checks if element has a `disabled` property
   * toBeFocused()
     - Checks if element is focused  
   * toBeHidden()
