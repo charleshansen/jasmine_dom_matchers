@@ -1,0 +1,1 @@
+jasmine: ./node_modules/.bin/gulp jasmine

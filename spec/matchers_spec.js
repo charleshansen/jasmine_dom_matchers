@@ -1,8 +1,12 @@
-describe("Matchers", function() {
-  var $ = window.jQuery;
+require('./spec_helper');
+
+describe('Matchers', function() {
+  beforeEach(() => {
+    jasmine.addMatchers(require('../src/matchers'));
+  });
 
   function itWorks() {
-    describe("matchers that expect a single element", function() {
+    describe('matchers that expect a single element', function() {
       it('works when given a collection with one element', function() {
         expect($('<div class="foo"></div>')).toHaveClass('foo');
       });
@@ -24,12 +28,12 @@ describe("Matchers", function() {
 
       it('raises an error if more than one element is found', function() {
         expect(function() {
-          expect($('<div>foo</div><div>bar</div>')).toHaveClass('foo')
+          expect($('<div>foo</div><div>bar</div>')).toHaveClass('foo');
         }).toThrowError('Attempting to make single element assertion on multiple elements');
       });
     });
 
-    describe("matchers that expect an element array", function() {
+    describe('matchers that expect an element array', function() {
       it('works when given a collection with one element', function() {
         expect($('<div class="foo"></div>')).toHaveLength(1);
       });
@@ -50,7 +54,7 @@ describe("Matchers", function() {
     });
 
     describe('visibility', function() {
-      it('matches visible elements are visible', function() {
+      itBrowserOnly('matches visible elements are visible', function() {
         document.querySelector('#jasmine-content').appendChild($('<div class="foo"></div>')[0]);
         expect('.foo').toBeVisible();
         expect('.foo').not.toBeHidden();
@@ -101,7 +105,7 @@ describe("Matchers", function() {
       });
     });
 
-    describe("toHaveText", function() {
+    describe('toHaveText', function() {
       it('matches text exactly', function() {
         expect($('<div>foo</div>')).toHaveText('foo');
         expect($('<div><span>foo</span><p></p></div>')).toHaveText('foo');
@@ -123,7 +127,7 @@ describe("Matchers", function() {
       });
     });
 
-    describe("toContainText", function() {
+    describe('toContainText', function() {
       it('matches strings', function() {
         expect($('<div>foo</div>')).toContainText('foo');
         expect($('<div>foo</div>')).toContainText('oo');
@@ -165,7 +169,7 @@ describe("Matchers", function() {
       });
     });
 
-    describe("toHaveProp", function() {
+    describe('toHaveProp', function() {
       it('reads the property, not the attribute', function() {
         expect($('<input type="checkbox" checked="checked"/>')).toHaveProp('checked', true);
         expect($('<input type="checkbox" checked="checked"/>')).not.toHaveProp('checked', 'checked');
@@ -182,10 +186,10 @@ describe("Matchers", function() {
       });
     });
 
-    describe("toHaveCss", function() {
+    describe('toHaveCss', function() {
       beforeEach(function() {
         document.querySelector('#jasmine-content')
-        .appendChild($('<div class="foo" style="font-size: 16px; display: inline-block;"></div>')[0]);
+          .appendChild($('<div class="foo" style="font-size: 16px; display: inline-block;"></div>')[0]);
       });
       it('passes if the css matches', function() {
         expect('.foo').toHaveCss({'font-size': '16px', display: 'inline-block'});
@@ -201,7 +205,7 @@ describe("Matchers", function() {
       });
     });
 
-    describe("toHaveValue", function() {
+    describe('toHaveValue', function() {
       it('tests values', function() {
         expect($('<input type="text" value="foo"/>')).toHaveValue('foo');
         expect($('<input type="text" value="foo"/>')).not.toHaveValue('bar');
@@ -236,7 +240,7 @@ describe("Matchers", function() {
     });
 
     it('tests focus', function() {
-      var focusedInput = $('<input class="focused" type="text">')[0];
+      const focusedInput = $('<input class="focused" type="text">')[0];
       document.querySelector('#jasmine-content').appendChild(focusedInput);
       document.querySelector('#jasmine-content').appendChild($('<input class="blurred" type="text">')[0]);
       focusedInput.focus();
@@ -258,8 +262,8 @@ describe("Matchers", function() {
       });
 
       it('works on arrays', function() {
-        expect([1,2,3]).toHaveLength(3);
-        expect([1,2,3]).not.toHaveLength(4);
+        expect([1, 2, 3]).toHaveLength(3);
+        expect([1, 2, 3]).not.toHaveLength(4);
       });
     });
   }
