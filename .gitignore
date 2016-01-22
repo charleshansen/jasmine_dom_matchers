@@ -1,4 +1,5 @@
 *.iml
-.idea
-node_modules
-.grunt
+/.idea/*
+/coverage/*
+/dist/*
+/node_modules/*

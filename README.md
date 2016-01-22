@@ -130,14 +130,16 @@ To run tests headlessly:
 
 ```sh
 npm install
-npm test
+gulp spec-browser
 ```
 
 To run tests in browser:
 
 ```sh
 npm install
-grunt connect
+gulp jasmine
 ```
 
-Tests will be at http://localhost:8888/_SpecRunner.html
+Tests will be at http://localhost:8888
+
+N.B.: Windows users will need to install python 2.x and visual studio before `npm install` due to the jsdom native extensions
