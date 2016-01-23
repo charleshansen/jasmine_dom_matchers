@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 function isString(obj) {
   return obj.constructor === String;
 }
