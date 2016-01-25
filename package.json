@@ -2,7 +2,7 @@
   "name": "jasmine_dom_matchers",
   "description": "dom matchers for Jasmine",
   "main": "jasmine_dom_matchers.js",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "keywords": [
     "jasmine"
   ],
