@@ -1,5 +1,3 @@
-require('babel-polyfill');
-
 function isString(obj) {
   return obj.constructor === String;
 }
@@ -9,7 +7,7 @@ function isFunction(obj) {
 }
 
 function maybeStringify(obj) {
-  return typeof obj !== 'boolean' && !([undefined, null].includes(obj)) && isFunction(obj.toString) ? obj.toString() : obj;
+  return typeof obj !== 'boolean' && obj !== undefined && obj !== null && isFunction(obj.toString) ? obj.toString() : obj;
 }
 
 function stringifyHtml(htmlCollection) {
