@@ -12,6 +12,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     chunkFilename: '[id].js',
+    libraryTarget: 'umd',
     pathinfo: false
   }
 };
