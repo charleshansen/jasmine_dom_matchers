@@ -43,7 +43,7 @@ expect(document.querySelectorAll('.foo')).toHaveAttr('href', 'github.com');
 Jasmine Dom Matchers does not use jQuery by default. This means it does not use jQuery pseudo-selectors unless jQuery is available.
 The following expectation will only work if jQuery is available.
 ```javascript
-expect(':contains("foo")).toHaveAttr('href', 'github.com');
+expect(':contains("foo")').toHaveAttr('href', 'github.com');
 ```
 
 #### False passing protection
